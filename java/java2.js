@@ -1,15 +1,14 @@
-//API Http request
-//.send must be last in call stack, after .open or call backs
-
-
-
 
 
 const firstReq = new XMLHttpRequest();                      //create const
 firstReq.addEventListener('load', function() {              //   add API eventlistener
   console.log('It worked!');
   const data = JSON.parse(this.responseText)
-  console.log(data.results[0].films[0]);  
+  const filmURL = data.results[0].films[0]; 
+  const filmReq = new XMLHttpRequest();
+   console.log('Second request worked');
+   const filmData = JSON.parse(this.responseText);
+   console.log(filmData);
 });
 firstReq.addEventListener('error', () => {                   //use function to listen for errors
   console.log('error 404');
