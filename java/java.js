@@ -1,6 +1,17 @@
+//API Http request
+//.send must be last in call stack, after .open or call backs
+
+
+
+
+
 const firstReq = new XMLHttpRequest();
-firstReq.addEventListener('load', () => {
+firstReq.addEventListener('load', function() {
   console.log('It worked!');
+  const data = JSON.parse(this.responseText)
+  for(let planet of data.results){
+    console.log(planet.name);
+  }
 });
 firstReq.addEventListener('error', () => {
   console.log('error 404');
